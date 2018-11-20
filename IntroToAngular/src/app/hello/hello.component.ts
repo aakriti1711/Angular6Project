@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecordsService } from '../records.service';
 
 interface myData{
-  obj :Object
+  obj : Object
 }
 
 @Component({
@@ -14,7 +14,7 @@ export class HelloComponent implements OnInit {
   myVariable ="App"
   text ="Aakriti"
   disable = false
-  data= [];
+  data: any[];
    
   constructor(private _recordService:RecordsService) {
     // setInterval(()=>{
@@ -28,7 +28,7 @@ export class HelloComponent implements OnInit {
   ngOnInit() {
     this._recordService.getData()
                 .subscribe(data => {
-                  this.data = data.obj
+                  this.data = data[0].obj
                 });
                 
   }
