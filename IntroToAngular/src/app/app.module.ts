@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello/hello.component';
 import { RecordsService } from './records.service';
@@ -19,7 +20,19 @@ import { DataComponent } from './data/data.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      
+      {
+        path:'/data',
+        component: DataComponent
+      },
+      {
+        path:'',
+        component: HomeComponent
+      }
+     
+    ],)
   ],
   providers: [RecordsService],
   bootstrap: [AppComponent]
