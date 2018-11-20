@@ -1,0 +1,21 @@
+<input type="text" [value]="myVariable" [disabled]="disable" />
+<!--<input type = "text" [value]="text" (input)= "updateValue($event)">-->
+
+<!--Implemented 2 way data binding with input event-->
+{{text}}
+
+<input type="text" [(ngModel)]="text">
+
+<table>
+  <tr>
+    <td>Seriol Number</td>
+    <td>Name</td>
+    <td>Is Online?</td>
+  </tr>
+  <tr *ngFor="let d of data; let i =index;let oddRecord = odd;let evenRecord = even;let first = first;let last = last" [ngClass]="{ odd : oddRecord, even : evenRecord,first :first, last:last}">
+    <td>{{i + 1}}</td>
+    <td>{{d.name}}</td>
+    <td>{{d.online}}</td>
+
+  </tr>
+</table>
