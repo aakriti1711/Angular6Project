@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { RecordsService } from '../records.service';
+
+interface myData{
+  obj :Object
+}
 
 @Component({
   selector: 'app-hello',
@@ -9,26 +14,9 @@ export class HelloComponent implements OnInit {
   myVariable ="App"
   text ="Aakriti"
   disable = false
-
-  data =[
-    {
-      name:"Aakriti",
-      online:true
-    },
-    {
-      name:"ABC",
-      online:false
-    },
-    {
-      name:"DEF",
-      online:true
-    },
-    {
-      name:"GHI",
-      online:false
-    } 
-]
-  constructor() {
+  data= [];
+   
+  constructor(private _recordService:RecordsService) {
     // setInterval(()=>{
     //   this.myVariable = Math.random().toString()
     //   this.disable = Math.random() >0.5
@@ -38,6 +26,11 @@ export class HelloComponent implements OnInit {
     this.text = e.target.value 
    }
   ngOnInit() {
+    this._recordService.getData()
+                .subscribe(data => {
+                  this.data = data.obj
+                });
+                
   }
 
 }
